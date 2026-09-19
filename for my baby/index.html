@@ -1,0 +1,1295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Baby 💙</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #061426;
+    color: white;
+    overflow-x: hidden;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+}
+
+/* STARS */
+
+#stars {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle {
+    from {
+        opacity: .2;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* INTRO */
+
+#intro {
+    position: fixed;
+    inset: 0;
+    background: #061426;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 1000;
+    transition: opacity .8s;
+}
+
+.intro-box {
+    padding: 30px;
+}
+
+.intro-box h1 {
+    font-size: 55px;
+    margin-bottom: 10px;
+}
+
+.intro-box p {
+    color: #b8d9ff;
+}
+
+.primary {
+    background: #238cff;
+    border: none;
+    color: white;
+    padding: 14px 25px;
+    border-radius: 30px;
+    font-size: 17px;
+    margin-top: 15px;
+    box-shadow: 0 0 25px #238cff66;
+}
+
+.primary:hover {
+    transform: scale(1.05);
+}
+
+/* NAV */
+
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: #061426dd;
+    backdrop-filter: blur(10px);
+    padding: 12px;
+    text-align: center;
+}
+
+nav button {
+    background: none;
+    border: none;
+    color: #b8d9ff;
+    margin: 5px;
+    font-size: 14px;
+}
+
+nav button:hover {
+    color: white;
+}
+
+/* GENERAL */
+
+main {
+    position: relative;
+    z-index: 1;
+}
+
+section {
+    max-width: 900px;
+    margin: auto;
+    padding: 70px 20px;
+}
+
+h2 {
+    text-align: center;
+    font-size: 35px;
+    margin-bottom: 15px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #9dbce0;
+    margin-bottom: 35px;
+}
+
+/* TIMELINE */
+
+.timeline {
+    border-left: 3px solid #238cff;
+    padding-left: 25px;
+}
+
+.event {
+    margin-bottom: 35px;
+    position: relative;
+}
+
+.event::before {
+    content: "💙";
+    position: absolute;
+    left: -43px;
+    top: 0;
+}
+
+.date {
+    color: #57a7ff;
+    font-weight: bold;
+}
+
+.event h3 {
+    margin-bottom: 5px;
+}
+
+/* GALLERY */
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.gallery img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.gallery img:hover {
+    transform: scale(1.03);
+}
+
+/* CARDS */
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+}
+
+.card {
+    background: #0c2340;
+    border: 1px solid #1b4675;
+    padding: 25px;
+    border-radius: 18px;
+    text-align: center;
+}
+
+.card button {
+    background: #12365e;
+    color: white;
+    border: 1px solid #2b70ae;
+    border-radius: 12px;
+    padding: 15px;
+    width: 100%;
+}
+
+/* LETTER */
+
+.envelope {
+    text-align: center;
+}
+
+.letter {
+    display: none;
+    background: #eef6ff;
+    color: #10243b;
+    padding: 30px;
+    border-radius: 15px;
+    margin-top: 20px;
+    line-height: 1.7;
+    text-align: left;
+}
+
+.letter.show {
+    display: block;
+    animation: appear .5s;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* SCOTTY */
+
+.dog {
+    font-size: 90px;
+    text-align: center;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.dog:hover {
+    transform: scale(1.1) rotate(3deg);
+}
+
+.dog-message {
+    text-align: center;
+    color: #b8d9ff;
+}
+
+/* QUIZ */
+
+.quiz {
+    background: #0c2340;
+    padding: 25px;
+    border-radius: 20px;
+}
+
+.question {
+    margin-bottom: 25px;
+}
+
+.option {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    background: #12365e;
+    color: white;
+    border: 1px solid #2b70ae;
+    border-radius: 10px;
+}
+
+.option:hover {
+    background: #1b4f82;
+}
+
+#quizResult {
+    text-align: center;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+/* LOVE METER */
+
+.meter {
+    height: 30px;
+    background: #102a48;
+    border-radius: 30px;
+    overflow: hidden;
+    margin: 20px 0;
+}
+
+.meter-fill {
+    height: 100%;
+    width: 0%;
+    background: #238cff;
+    transition: width 1s;
+}
+
+.meter-text {
+    text-align: center;
+}
+
+/* MESSAGE */
+
+textarea {
+    width: 100%;
+    min-height: 140px;
+    border-radius: 15px;
+    padding: 15px;
+    font-family: inherit;
+    resize: vertical;
+}
+
+/* FINAL */
+
+#final {
+    text-align: center;
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#finalLove {
+    font-size: 60px;
+    display: none;
+    animation: lovePop 1s forwards;
+}
+
+@keyframes lovePop {
+    0% {
+        transform: scale(.2);
+        opacity: 0;
+    }
+
+    70% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* HEARTS */
+
+.heart {
+    position: fixed;
+    pointer-events: none;
+    animation: floatHeart 1s forwards;
+    z-index: 9999;
+}
+
+@keyframes floatHeart {
+    from {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(-100px) scale(1.5);
+    }
+}
+
+/* LIGHTBOX */
+
+#lightbox {
+    position: fixed;
+    inset: 0;
+    background: #000c;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 5000;
+    padding: 20px;
+}
+
+#lightbox img {
+    max-width: 95%;
+    max-height: 90%;
+    border-radius: 15px;
+}
+
+#lightbox.show {
+    display: flex;
+}
+
+/* MOBILE */
+
+@media(max-width:600px) {
+
+    .intro-box h1 {
+        font-size: 42px;
+    }
+
+    h2 {
+        font-size: 29px;
+    }
+
+    .gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    section {
+        padding: 55px 15px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div id="stars"></div>
+
+<div id="intro">
+    <div class="intro-box">
+        <h1>For Youuu 💙</h1>
+        <p>a little something made by Babu</p>
+
+        <button class="primary" id="openSite">
+            open it babyy
+        </button>
+    </div>
+</div>
+
+<audio id="music" loop>
+    <source src="song.mp3" type="audio/mpeg">
+</audio>
+
+<nav>
+    <button data-go="story">our story</button>
+    <button data-go="dates">dates</button>
+    <button data-go="scotty">scotty</button>
+    <button data-go="quiz">quiz</button>
+    <button data-go="letter">letter</button>
+    <button data-go="final">❤️</button>
+</nav>
+
+<main>
+<section id="story">
+
+    <h2>Our Story 💙</h2>
+    <p class="subtitle">
+        From talking again... to actually becoming us
+    </p>
+
+    <div class="timeline">
+
+        <div class="event">
+            <div class="date">April 7, 2026</div>
+            <h3>The random beginning</h3>
+            <p>
+                It started with me accidentally sending you a message.
+                Little did I know that tiny moment would eventually
+                lead us back to each other
+            </p>
+        </div>
+
+        <div class="event">
+            <div class="date">April 9, 2026</div>
+            <h3>Friends again</h3>
+            <p>
+                We started talking again. I asked kung nag d-draw ka parin,
+                then asked for recos sa anime hihi
+            </p>
+        </div>
+
+        <div class="event">
+            <div class="date">April 15, 2026</div>
+            <h3>WE😭</h3>
+            <p>
+                Nag confess ikaw ditoo. I asked for the initials of your crush
+                pero you said "WE" clueless ako noon until
+                you finally said Wesley HSAHSAAHA
+            </p>
+        </div>
+
+        <div class="event">
+            <div class="date">June 15, 2026</div>
+            <h3>May I court you?</h3>
+            <p>
+                During recess or lunch break, I finally asked if I could
+                court you. You held my arms, smiled, and said yes.
+                That moment meant so much to me
+            </p>
+        </div>
+
+        <div class="event">
+            <div class="date">July 9, 2026</div>
+            <h3>Our first date 🍟</h3>
+            <p>
+                Potato Corner after school. Fries, eating together,
+                talking, and trying to play Roblox pero di natuloy kasi
+                mahina internet HAHAHAHA
+            </p>
+        </div>
+
+        <div class="event">
+            <div class="date">July 25, 2026</div>
+            <h3>Mass Date</h3>
+            <p>
+                May practice kayo nonn ng jingle sa school, we went to
+                SM,window shopping sa kkv KKV, waffles,
+                photobooth poses, and eventually going back to school
+                for mass.
+            </p>
+        </div>
+
+        <div class="event">
+            <div class="date">July 28, 2026</div>
+            <h3>lego cat & penguin</h3>
+            <p>
+                I went back to KKV para kunin yung gusto mo na legoo.
+                We built them during lunch yung cat mo and penguin ko.
+                And unfortunately, hindi pa natin tapos HAHAHHA
+            </p>
+        </div>
+
+        <div class="event">
+            <div class="date">July 31, 2026</div>
+            <h3>Spider-Man 🕷️</h3>
+            <p>
+                After ng career guidance we went to Robinsons,
+                watched Spider-Man, made cute tiktoks,
+                and me kissing your head while you leaned close
+            </p>
+        </div>
+
+        <div class="event">
+            <div class="date">August 25, 2026</div>
+            <h3>Matching borgerr🍔</h3>
+            <p>
+                Another photobooth. Matching burger headgear,
+                burger hand signs, and wigs in our favorite colors,
+                blue for you and green for me hehe
+            </p>
+        </div>
+
+        <div class="event">
+            <div class="date">September 10, 2026</div>
+            <h3>The day everything changed 💙</h3>
+            <p>
+                You surprised me with the sweetest gift everr,
+                matching lego heart keychains, a lucky charm,
+                a little clay version of me, a drawing, a Lego
+                transformer, and your letter
+            </p>
+
+            <p>
+                Then I read the words:
+                <b>"yes. i want to be your girlfriend and i want
+                you to be my boyfriend."</b>
+            </p>
+
+            <p>
+                That became one of the happiest days of my life.
+            </p>
+        </div>
+
+        <div class="event">
+            <div class="date">September 17, 2026</div>
+            <h3>Cheek kiss + piggyback</h3>
+            <p>
+                ISA PANG PHOTOBOOTH DATE, my first piggyback with you,
+                and syempre yung kiss na hinding hindi ko makakalimutan
+            </p>
+
+            <p>
+                I definitely did not stop smiling after that muehehe 😭
+            </p>
+        </div>
+
+    </div>
+</section>
+
+
+<section id="dates">
+
+    <h2>Our Dates 📸</h2>
+
+    <p class="subtitle">
+        Every outing with you is a date. No arguments😌
+    </p>
+
+
+    <div class="card-grid">
+
+        <div class="card">
+            <h3>July 9 🍟</h3>
+            <p>Our first date.</p>
+
+            <div class="gallery" data-folder="july9"></div>
+        </div>
+
+
+        <div class="card">
+            <h3>July 25 🧇</h3>
+            <p>SM + waffles + photobooth</p>
+
+            <div class="gallery" data-folder="july25"></div>
+        </div>
+
+
+        <div class="card">
+            <h3>July 28 🧱</h3>
+            <p>Lego lunch</p>
+
+            <div class="gallery" data-folder="july28"></div>
+        </div>
+
+
+        <div class="card">
+            <h3>July 31 🕷️</h3>
+            <p>Spider-Man date</p>
+
+            <div class="gallery" data-folder="july31"></div>
+        </div>
+
+
+        <div class="card">
+            <h3>August 25 🍔</h3>
+            <p>Matching burger photobooth</p>
+
+            <div class="gallery" data-folder="aug25"></div>
+        </div>
+
+
+        <div class="card">
+            <h3>September 10 💌</h3>
+            <p>The day we became official</p>
+
+            <div class="gallery" data-folder="sept10"></div>
+        </div>
+
+
+        <div class="card">
+            <h3>September 17 💋</h3>
+            <p>Cheek kiss + piggyback</p>
+
+            <div class="gallery" data-folder="sept17"></div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<section id="scotty">
+
+    <h2>Meet Scotty 🐶</h2>
+
+    <p class="subtitle">
+        aka Fluffy, because apparently he got a name upgrade.
+    </p>
+
+    <div class="dog" id="dog">
+        🐶
+    </div>
+
+    <p class="dog-message" id="dogMessage">
+        tap Scotty 🙂
+    </p>
+
+</section>
+
+
+<section id="quiz">
+
+    <h2>How Well Do You Know Us? 💙</h2>
+
+    <p class="subtitle">
+        Okay Cha, let's see if you remember your Babu. 😭
+    </p>
+
+    <div class="quiz">
+
+        <div class="question" data-correct="b">
+
+            <h3>1. What is my nickname for you?</h3>
+
+            <button class="option" data-answer="a">
+                Yeyen
+            </button>
+
+            <button class="option" data-answer="b">
+                Bubba
+            </button>
+
+            <button class="option" data-answer="c">
+                Lyney
+            </button>
+
+        </div>
+
+
+        <div class="question" data-correct="c">
+
+            <h3>2. What's your favorite color?</h3>
+
+            <button class="option" data-answer="a">
+                Green
+            </button>
+
+            <button class="option" data-answer="b">
+                Pink
+            </button>
+
+            <button class="option" data-answer="c">
+                Blue
+            </button>
+
+        </div>
+
+
+        <div class="question" data-correct="a">
+
+            <h3>3. Where was our first date?</h3>
+
+            <button class="option" data-answer="a">
+                Potato Corner
+            </button>
+
+            <button class="option" data-answer="b">
+                Robinsons
+            </button>
+
+            <button class="option" data-answer="c">
+                KKV
+            </button>
+
+        </div>
+
+
+        <div class="question" data-correct="b">
+
+            <h3>4. When did I become your boyfriend?</h3>
+
+            <button class="option" data-answer="a">
+                August 25
+            </button>
+
+            <button class="option" data-answer="b">
+                September 10
+            </button>
+
+            <button class="option" data-answer="c">
+                September 17
+            </button>
+
+        </div>
+
+
+        <div id="quizResult"></div>
+
+    </div>
+
+</section>
+
+
+<section id="meter">
+
+    <h2>Our Love Meter 💙</h2>
+
+    <p class="subtitle">
+        medyo inaccurate...
+    </p>
+
+    <div class="meter">
+        <div class="meter-fill" id="meterFill"></div>
+    </div>
+
+    <p class="meter-text" id="meterText">
+        0%
+    </p>
+
+    <button class="primary" id="loveButton">
+        calculate our love
+    </button>
+
+</section>
+
+
+<section id="mystery">
+
+    <h2>Mystery Memories 🎁</h2>
+
+    <p class="subtitle">
+        Tap a box. You might unlock a memory.
+    </p>
+
+    <div class="card-grid">
+
+        <div class="card">
+            <button class="memory" data-memory="When you said yes to being courted 💙">
+                🎁<br><br>
+                Mystery #1
+            </button>
+        </div>
+
+        <div class="card">
+            <button class="memory" data-memory="Yung matching Lego heart keychains. Two pieces that make one heart🥹">
+                🎁<br><br>
+                Mystery #2
+            </button>
+        </div>
+
+        <div class="card">
+            <button class="memory" data-memory="Yung cheek kiss on September 17. Yepp I still remember hehehe😭💙">
+                🎁<br><br>
+                Mystery #3
+            </button>
+        </div>
+
+    </div>
+
+</section>
+
+
+<section id="letter">
+
+    <h2>A Letter For You 💌</h2>
+
+    <div class="envelope">
+
+        <button class="primary" id="letterButton">
+            open my letter
+        </button>
+
+        <div class="letter" id="letterContent">
+
+            <p>Hi Cha, my baby. 💙</p>
+
+            <p>
+                I don't think I can properly explain how happy I am
+                that we're finally here. After everything that happened
+                before, somehow we found our way back to each other
+            </p>
+
+            <p>
+                I love all the little things about us baby, our dates,
+                our random convos, our photobooths, our jokes and asaran,
+                and pati yung moments na we're just being weird
+                together.
+            </p>
+
+            <p>
+                Thank you for choosing me baby, for trusting me, and for
+                letting me be your Babu
+            </p>
+
+            <p>
+                I don't need everything to be perfect. I just want
+                us to keep choosing each other, to keep respecting each
+                other, and keep making memories together
+            </p>
+
+            <p>
+                I'm so happy na ako pinili mo
+            </p>
+
+            <p>
+                I love you so muchhhh babyyy💙
+            </p>
+
+            <p>
+                — Babu
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section id="message">
+
+    <h2>A Little Space For You 💙</h2>
+
+    <p class="subtitle">
+        Write anything you want. This stays on this device.
+    </p>
+
+    <textarea
+        id="chaMessage"
+        placeholder="Write something for Babu...">
+    </textarea>
+
+    <br>
+
+    <button class="primary" id="saveMessage">
+        save message 💙
+    </button>
+
+    <p id="savedMessage"></p>
+
+</section>
+
+
+<section id="final">
+
+    <h2>One Last Thing...</h2>
+
+    <p>
+        tap the button hehehe
+    </p>
+
+    <button class="primary" id="finalButton">
+        tap me 💙
+    </button>
+
+    <div id="finalLove">
+        I LOVE YOU 3000💙
+    </div>
+
+</section>
+<script>
+(function () {
+
+    /* CREATE STARS */
+
+    const stars = document.getElementById("stars");
+
+    for (let i = 0; i < 120; i++) {
+        const star = document.createElement("div");
+
+        star.className = "star";
+        star.style.left = Math.random() * 100 + "%";
+        star.style.top = Math.random() * 100 + "%";
+        star.style.animationDelay = Math.random() * 2 + "s";
+
+        stars.appendChild(star);
+    }
+
+
+    /* OPEN WEBSITE */
+
+    const intro = document.getElementById("intro");
+    const openSite = document.getElementById("openSite");
+    const music = document.getElementById("music");
+
+    openSite.addEventListener("click", function () {
+
+        intro.style.opacity = "0";
+
+        setTimeout(function () {
+            intro.style.display = "none";
+        }, 800);
+
+        music.play().catch(function () {
+            console.log("Music needs another tap.");
+        });
+
+    });
+
+
+    /* NAVIGATION */
+
+    document.querySelectorAll("[data-go]").forEach(function (button) {
+
+        button.addEventListener("click", function () {
+
+            const target = document.getElementById(
+                button.getAttribute("data-go")
+            );
+
+            if (target) {
+                target.scrollIntoView({
+                    behavior: "smooth"
+                });
+            }
+
+        });
+
+    });
+
+
+    /* PHOTO GALLERIES */
+
+    document.querySelectorAll(".gallery").forEach(function (gallery) {
+
+        const folder = gallery.dataset.folder;
+
+        for (let i = 1; i <= 6; i++) {
+
+            const img = document.createElement("img");
+
+            img.src = folder + "/" + i + ".jpg";
+            img.alt = "Memory photo " + i;
+
+            img.addEventListener("error", function () {
+                img.remove();
+            });
+
+            img.addEventListener("click", function () {
+                openLightbox(img.src);
+            });
+
+            gallery.appendChild(img);
+        }
+
+    });
+
+
+    /* LIGHTBOX */
+
+    const lightbox = document.createElement("div");
+
+    lightbox.id = "lightbox";
+
+    lightbox.innerHTML = `
+        <img id="lightboxImage" src="" alt="Photo">
+    `;
+
+    document.body.appendChild(lightbox);
+
+    function openLightbox(src) {
+
+        document.getElementById("lightboxImage").src = src;
+
+        lightbox.classList.add("show");
+
+    }
+
+    lightbox.addEventListener("click", function () {
+        lightbox.classList.remove("show");
+    });
+
+
+    /* SCOTTY */
+
+    const dog = document.getElementById("dog");
+    const dogMessage = document.getElementById("dogMessage");
+
+    const dogMessages = [
+        "Scotty says hi to Babu🐶💙",
+        "Fun fact: Scotty was originally called Fluffy😭",
+        "Scotty approves of Cha and Babu🐶",
+        "Scotty wants treats. Obviously",
+        "Fluffy... I mean SCOTTY... is watching👀"
+    ];
+
+    dog.addEventListener("click", function () {
+
+        const randomMessage =
+            dogMessages[Math.floor(Math.random() * dogMessages.length)];
+
+        dogMessage.textContent = randomMessage;
+
+    });
+
+
+    /* QUIZ */
+
+    const questions = document.querySelectorAll(".question");
+    const quizResult = document.getElementById("quizResult");
+
+    questions.forEach(function (question) {
+
+        question.querySelectorAll(".option").forEach(function (option) {
+
+            option.addEventListener("click", function () {
+
+                const answer = option.dataset.answer;
+                const correct = question.dataset.correct;
+
+                question.dataset.answered = answer === correct
+                    ? "correct"
+                    : "wrong";
+
+                if (answer === correct) {
+                    option.textContent = "✓ " + option.textContent;
+                } else {
+                    option.textContent = "✗ " + option.textContent;
+                }
+
+                calculateQuiz();
+
+            });
+
+        });
+
+    });
+
+
+    function calculateQuiz() {
+
+        let answered = 0;
+        let score = 0;
+
+        questions.forEach(function (question) {
+
+            if (question.dataset.answered) {
+
+                answered++;
+
+                if (question.dataset.answered === "correct") {
+                    score++;
+                }
+
+            }
+
+        });
+
+        if (answered === questions.length) {
+
+            quizResult.textContent =
+                "You got " + score + "/" + questions.length +
+                "! 💙";
+
+        }
+
+    }
+
+
+    /* LOVE METER */
+
+    const loveButton = document.getElementById("loveButton");
+    const meterFill = document.getElementById("meterFill");
+    const meterText = document.getElementById("meterText");
+
+    loveButton.addEventListener("click", function () {
+
+        let number = 0;
+
+        const interval = setInterval(function () {
+
+            number++;
+
+            meterFill.style.width = number + "%";
+            meterText.textContent = number + "%";
+
+            if (number >= 100) {
+
+                clearInterval(interval);
+
+                meterText.textContent =
+                    "100%... okay maybe masyadong mababa😭";
+
+            }
+
+        }, 15);
+
+        createHearts(12);
+
+    });
+
+
+    /* MYSTERY BOXES */
+
+    document.querySelectorAll(".memory").forEach(function (button) {
+
+        button.addEventListener("click", function () {
+
+            alert(button.dataset.memory);
+
+            createHearts(5);
+
+        });
+
+    });
+
+
+    /* LETTER */
+
+    const letterButton = document.getElementById("letterButton");
+    const letterContent = document.getElementById("letterContent");
+
+    letterButton.addEventListener("click", function () {
+
+        letterContent.classList.toggle("show");
+
+        if (letterContent.classList.contains("show")) {
+
+            letterButton.textContent = "close my letter";
+
+        } else {
+
+            letterButton.textContent = "open my letter";
+
+        }
+
+    });
+
+
+    /* CHA'S MESSAGE */
+
+    const chaMessage = document.getElementById("chaMessage");
+    const saveMessage = document.getElementById("saveMessage");
+    const savedMessage = document.getElementById("savedMessage");
+
+    const oldMessage = localStorage.getItem("chaMessage");
+
+    if (oldMessage) {
+        chaMessage.value = oldMessage;
+    }
+
+    saveMessage.addEventListener("click", function () {
+
+        localStorage.setItem(
+            "chaMessage",
+            chaMessage.value
+        );
+
+        savedMessage.textContent =
+            "Saved for Babu to read later. 💙";
+
+        createHearts(8);
+
+    });
+
+
+    /* FINAL */
+
+    const finalButton = document.getElementById("finalButton");
+    const finalLove = document.getElementById("finalLove");
+
+    finalButton.addEventListener("click", function () {
+
+        finalLove.style.display = "block";
+
+        finalButton.style.display = "none";
+
+        createHearts(35);
+
+    });
+
+
+    /* HEART ANIMATION */
+
+    function createHearts(amount) {
+
+        for (let i = 0; i < amount; i++) {
+
+            const heart = document.createElement("div");
+
+            heart.className = "heart";
+            heart.textContent = "💙";
+
+            heart.style.left =
+                Math.random() * 100 + "vw";
+
+            heart.style.top =
+                Math.random() * 100 + "vh";
+
+            heart.style.fontSize =
+                (15 + Math.random() * 25) + "px";
+
+            document.body.appendChild(heart);
+
+            setTimeout(function () {
+                heart.remove();
+            }, 1200);
+
+        }
+
+    }
+
+
+})();
+</script>
+
+</main>
+
+</body>
+</html>
